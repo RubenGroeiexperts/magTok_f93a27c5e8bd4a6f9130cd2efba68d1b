@@ -17,8 +17,8 @@ def get_magento_token():
 def update_google_sheet(token):
     gc = gspread.Client(None)
     gc.session = gspread.auth.DEFAULT_SESSION
-    sheet = gc.open_by_url(os.getenv("SPREADSHEET_URL")).sheet1
-    sheet.update_acell("A2", token)
+    sheet = gc.open_by_url(os.getenv("SPREADSHEET_URL")).worksheet("tkn")
+    sheet.update_acell("A1", token)
 
 def main():
     token = get_magento_token()
